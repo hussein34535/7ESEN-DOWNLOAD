@@ -8,8 +8,6 @@ export const metadata = {
   generator: 'v0.dev'
 }
 
-export const runtime = 'edge';
-
 export default function RootLayout({
   children,
 }: {
