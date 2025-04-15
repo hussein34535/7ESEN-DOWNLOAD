@@ -7,8 +7,8 @@ import Image from "next/image"
 
 export default function DownloadPage() {
   // Single download link
-  const downloadLink = "/waledpro.apk"
-  const downloadFilename = "waledpro.apk"
+  const downloadLink = "/7esenTV.apk"
+  const downloadFilename = "7esenTV.apk"
 
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -25,10 +25,10 @@ export default function DownloadPage() {
       <div className="w-full max-w-md mx-auto text-center">
         {/* Logo */}
         <div className="mb-6 flex justify-center">
-          <Image src="/logo.png" alt="Waledpro Logo" width={120} height={120} className="mb-2" />
+          <Image src="/logo.png" alt="7eSen TV Logo" width={120} height={120} className="mb-2" />
         </div>
 
-        <h1 className="text-3xl font-bold mb-2 text-red-600">Waledpro</h1>
+        <h1 className="text-3xl font-bold mb-2 text-red-600">7eSen TV</h1>
         <p className="text-gray-400 mb-8">قم بتنزيل التطبيق الرسمي لجهازك</p>
 
         <Card className="bg-gray-900 border-gray-800 mb-8">
@@ -40,7 +40,7 @@ export default function DownloadPage() {
               <a href={downloadLink} onClick={handleDownload}>
                 <Button size="lg" className="w-full bg-red-600 hover:bg-red-700 text-white py-6 px-8 text-lg">
                   <Download className="mr-2 h-5 w-5" />
-                  تحميل Waledpro
+                  تحميل 7eSen TV
                 </Button>
               </a>
 
@@ -49,7 +49,7 @@ export default function DownloadPage() {
           </CardContent>
         </Card>
 
-        <div className="text-xs text-gray-600">© 2024 Waledpro. All rights reserved</div>
+        <div className="text-xs text-gray-600">© 2024 7eSen TV. All rights reserved</div>
       </div>
     </div>
   )

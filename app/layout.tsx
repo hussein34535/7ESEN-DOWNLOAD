@@ -3,8 +3,8 @@ import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
-  title: "Waledpro - Official Download",
-  description: "Download the official Waledpro app for your device",
+  title: "7eSen TV - Official Download",
+  description: "Download the official 7eSen TV app for your device",
   generator: 'v0.dev'
 }
 
