@@ -1,11 +1,9 @@
 import type { ReactNode } from "react"
 import "@/app/globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
-  title: "7eSen TV - Official Download",
-  description: "Download the official 7eSen TV app for your device",
-  generator: 'v0.dev'
+  title: "7eSen TV - Download",
+  description: "Download the official 7eSen TV app.",
 }
 
 export default function RootLayout({
@@ -14,14 +12,13 @@ export default function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning>
+    <html lang="ar" dir="rtl">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/logo.png" />
       </head>
-      <body className="min-h-screen bg-black">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+      <body>
+        {children}
       </body>
     </html>
   )
