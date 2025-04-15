@@ -5,15 +5,43 @@ import { Download, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
+interface Star {
+  id: number;
+  top: string;
+  left: string;
+  size: number;
+  opacity: number;
+  twinkleDuration: number;
+  twinkleDelay: number;
+  driftDuration: number;
+  driftDelay: number;
+}
+
 export default function SimpleDownloadPage() {
   const downloadLink = "/7esenTV.apk"
   const downloadFilename = "7esenTV.apk"
   const fileSize = "26MB"
   const [isMounted, setIsMounted] = useState(false);
+  const [generatedStars, setGeneratedStars] = useState<Star[]>([]); // State for stars
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
+
+    // Generate stars only on the client after mount
+    const starsArray = Array.from({ length: 50 }, (_, i): Star => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      size: Math.random() * 1.5 + 0.5, // 0.5px to 2px
+      opacity: Math.random() * 0.6 + 0.4, // 0.4 to 1.0 base opacity
+      twinkleDuration: Math.random() * 5 + 5, // 5-10s twinkle cycle
+      twinkleDelay: Math.random() * 5, // Randomize twinkle start
+      driftDuration: Math.random() * 30 + 20, // Faster drift: 20-50s cycle
+      driftDelay: Math.random() * 20, // Randomize drift start (shorter delay range)
+    }));
+    setGeneratedStars(starsArray); // Update state
+
+  }, []); // Empty dependency array ensures this runs only once on the client
 
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -24,19 +52,6 @@ export default function SimpleDownloadPage() {
     link.click();
     document.body.removeChild(link);
   };
-
-  // Generate fewer, brighter, twinkling stars with faster drift
-  const stars = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    size: Math.random() * 1.5 + 0.5, // 0.5px to 2px
-    opacity: Math.random() * 0.6 + 0.4, // 0.4 to 1.0 base opacity
-    twinkleDuration: Math.random() * 5 + 5, // 5-10s twinkle cycle
-    twinkleDelay: Math.random() * 5, // Randomize twinkle start
-    driftDuration: Math.random() * 30 + 20, // Faster drift: 20-50s cycle
-    driftDelay: Math.random() * 20, // Randomize drift start (shorter delay range)
-  }));
 
   return (
     <div className="min-h-screen bg-black overflow-hidden relative text-white flex flex-col items-center justify-center p-4 sm:p-6">
@@ -53,8 +68,8 @@ export default function SimpleDownloadPage() {
           <div className="absolute inset-0 bg-gradient-radial from-cyan-800/15 via-transparent to-transparent blur-[100px] animate-slow-drift"></div>
         </div>
 
-        {/* Twinkling & Drifting Stars */}
-        {stars.map((star) => (
+        {/* Twinkling & Drifting Stars (Rendered from state) */}
+        {generatedStars.map((star) => ( // Use generatedStars state here
           <div
             key={star.id}
             className="absolute rounded-full bg-white"
@@ -104,9 +119,16 @@ export default function SimpleDownloadPage() {
 
         {/* Description */}
         <p 
-          className={`text-base sm:text-lg text-gray-200 mb-8 sm:mb-12 leading-relaxed max-w-xs sm:max-w-sm mx-auto transition-all duration-1000 delay-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`text-base sm:text-lg text-gray-200 mb-4 sm:mb-6 leading-relaxed max-w-xs sm:max-w-sm mx-auto transition-all duration-1000 delay-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           تطبيقك الأمثل لمشاهدة القنوات العربية والرياضية ومباريات كرة القدم مباشرة ومعادة.
+        </p>
+
+        {/* SEO Enhancement Text (Visually Hidden) */}
+        <p 
+          className={`sr-only`}
+        >
+          قم بتنزيل 7esen TV (المعروف أيضًا باسم حسين تيفي أو 7esentv) واستمتع بأفضل تجربة مشاهدة. التطبيق مجاني وسهل الاستخدام ومتوافق مع Android.
         </p>
 
         {/* Download Button */}
