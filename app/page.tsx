@@ -18,13 +18,22 @@ interface Star {
 }
 
 export default function SimpleDownloadPage() {
-  const downloadLink = "/7esenTV.apk"
+  const [downloadLink, setDownloadLink] = useState("/7esenTV.apk")
   const downloadFilename = "7esenTV.apk"
   const fileSize = "26MB"
   const [isMounted, setIsMounted] = useState(false);
   const [generatedStars, setGeneratedStars] = useState<Star[]>([]); // State for stars
 
   useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const is64Bit = userAgent.includes("arm64") || userAgent.includes("aarch64");
+
+    if (is64Bit) {
+      setDownloadLink("/apks/7esenTV64.apk");
+    } else {
+      setDownloadLink("/apks/7esenTV.apk");
+    }
+
     setIsMounted(true);
 
     // Generate stars only on the client after mount
@@ -69,7 +78,7 @@ export default function SimpleDownloadPage() {
         </div>
 
         {/* Twinkling & Drifting Stars (Rendered from state) */}
-        {generatedStars.map((star) => ( // Use generatedStars state here
+        {generatedStars.map((star) => (
           <div
             key={star.id}
             className="absolute rounded-full bg-white"
@@ -78,7 +87,7 @@ export default function SimpleDownloadPage() {
               left: star.left,
               width: `${star.size}px`,
               height: `${star.size}px`,
-              opacity: star.opacity, // Base opacity for twinkle
+              opacity: star.opacity,
               animationName: 'twinkle, starDrift',
               animationDuration: `${star.twinkleDuration}s, ${star.driftDuration}s`,
               animationDelay: `${star.twinkleDelay}s, ${star.driftDelay}s`,
