@@ -20,7 +20,6 @@ interface Star {
 export default function SimpleDownloadPage() {
   const [downloadLink, setDownloadLink] = useState("/7esenTV.apk")
   const downloadFilename = "7esenTV.apk"
-  const fileSize = "26MB"
   const [isMounted, setIsMounted] = useState(false);
   const [generatedStars, setGeneratedStars] = useState<Star[]>([]); // State for stars
 
@@ -78,7 +77,7 @@ export default function SimpleDownloadPage() {
         </div>
 
         {/* Twinkling & Drifting Stars (Rendered from state) */}
-        {generatedStars.map((star) => (
+        {generatedStars.map((star: Star) => (
           <div
             key={star.id}
             className="absolute rounded-full bg-white"
@@ -146,14 +145,13 @@ export default function SimpleDownloadPage() {
         >
           <a href={downloadLink} onClick={handleDownload} className="block w-full">
             <div className="relative">
-              <span className="absolute -inset-1 rounded-[22px] bg-red-500/20 blur-sm animate-pulse opacity-75"></span>
+              <span className="absolute -inset-2 rounded-[22px] bg-red-500/30 blur-md animate-pulse opacity-85"></span>
               <Button 
                 size="lg" 
                 className="relative w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold py-4 sm:py-5 px-4 sm:px-6 text-base sm:text-lg rounded-[22px] shadow-lg transition-all duration-300 hover:shadow-red-500/30 hover:translate-y-[-2px]"
               >
                 <Download className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                <span>تحميل التطبيق</span>
-                <span className="text-xs sm:text-sm opacity-90 mr-2">({fileSize})</span>
+                <span>تحميل التطبيق <span className="text-xs font-light opacity-70 mr-1">(احدث نسخه)</span></span>
               </Button>
             </div>
           </a>
@@ -176,47 +174,6 @@ export default function SimpleDownloadPage() {
            © 2025 7eSen TV
         </p>
       </div>
-
-      {/* CSS animation keyframes */}
-      <style jsx global>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 0.5; transform: scale(0.98); }
-          50% { opacity: 0.8; transform: scale(1.01); }
-        }
-
-        @keyframes twinkle {
-          0%, 100% { opacity: inherit; } /* Use base opacity set inline */
-          50% { opacity: calc(inherit * 0.5); }
-        }
-        
-        @keyframes starDrift {
-           0% { transform: translate(0, 0); }
-           100% { transform: translate(-20vw, 15vh); } /* Distance remains the same */
-        }
-
-        @keyframes slow-drift { /* For nebula */
-          0% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(5vw, -5vh) scale(1.05); }
-          100% { transform: translate(0, 0) scale(1); }
-        }
-
-        .animate-slow-drift { /* Applied to one nebula layer */
-          animation: slow-drift 90s ease-in-out infinite alternate;
-        }
-        
-        /* Tailwind purge fixes are no longer needed for bg-gradient-to-bl or simple bg colors */
-        /* Keeping fixes for radial gradients and mix-blend modes */
-        .bg-gradient-radial {
-          background-image: radial-gradient(circle, var(--tw-gradient-stops));
-        }
-        .from-red-800\/30 { --tw-gradient-from: rgba(153, 27, 27, 0.3) var(--tw-gradient-from-position); --tw-gradient-to: rgba(153, 27, 27, 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-        .via-transparent { --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to); }
-        .to-transparent { --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position); }
-        .from-purple-900\/20 { --tw-gradient-from: rgba(88, 28, 135, 0.2) var(--tw-gradient-from-position); --tw-gradient-to: rgba(88, 28, 135, 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-        .from-cyan-800\/15 { --tw-gradient-from: rgba(21, 94, 117, 0.15) var(--tw-gradient-from-position); --tw-gradient-to: rgba(21, 94, 117, 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-        .mix-blend-screen { mix-blend-mode: screen; }
-        .mix-blend-color-dodge { mix-blend-mode: color-dodge; }
-      `}</style>
     </div>
   )
 }
