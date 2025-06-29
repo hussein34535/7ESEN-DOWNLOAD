@@ -24,7 +24,7 @@ export function UpdateDialog({ updates }: UpdateDialogProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[400px] mx-4 bg-gray-900 border border-gray-700 shadow-2xl rounded-3xl p-6 animate-fade-in">
+      <DialogContent className="w-[calc(100%-2rem)] max-w-sm mx-auto bg-gray-900 border border-gray-700 shadow-2xl rounded-3xl p-6 animate-fade-in">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center text-red-500">🎉 تحديثات جديدة! 🎉</DialogTitle>
           <DialogDescription className="text-center text-gray-300 mt-2">
