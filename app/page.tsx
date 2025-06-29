@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Download, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { UpdateDialog } from "@/components/UpdateDialog"
 
 interface Star {
   id: number;
@@ -22,6 +23,14 @@ export default function SimpleDownloadPage() {
   const downloadFilename = "7esenTV.apk"
   const [isMounted, setIsMounted] = useState(false);
   const [generatedStars, setGeneratedStars] = useState<Star[]>([]); // State for stars
+
+  const updatesList = [
+    "إضافة اختيار الجودة في المباريات المعادة والملخصات",
+    "إضافة خاصية تعديل ألوان التطبيق حسب اختيارك",
+    "تعديل الأخطاء وتحسين الأداء",
+    "إضافة قنوات جديدة",
+    "تعديلات جميع روابط القنوات",
+  ];
 
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -174,6 +183,8 @@ export default function SimpleDownloadPage() {
            © 2025 7eSen TV
         </p>
       </div>
+
+      <UpdateDialog updates={updatesList} />
     </div>
   )
 }
