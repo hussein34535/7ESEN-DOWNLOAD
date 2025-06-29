@@ -35,7 +35,7 @@ export default function SimpleDownloadPage() {
 
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
-    const is64Bit = userAgent.includes("arm64") || userAgent.includes("aarch64");
+    const is64Bit = userAgent.includes("arm64") || userAgent.includes("aarch64") || userAgent.includes("armv8");
 
     if (is64Bit) {
       setDownloadLink("/apks/7esenTV64.apk");
