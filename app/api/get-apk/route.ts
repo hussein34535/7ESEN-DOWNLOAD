@@ -24,6 +24,6 @@ export async function GET(request: Request) {
     return NextResponse.redirect(new URL('/apks/7esenTV32.apk', request.url));
   } else {
     // Fallback for unknown/unspecified architectures
-    return NextResponse.redirect(new URL('/public/7esenTV.apk', request.url));
+    return NextResponse.redirect(new URL('/7esenTV.apk', request.url));
   }
 } 
