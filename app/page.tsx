@@ -19,7 +19,6 @@ interface Star {
 }
 
 export default function SimpleDownloadPage() {
-  const [downloadLink, setDownloadLink] = useState("/7esenTV.apk")
   const downloadFilename = "7esenTV.apk"
   const [isMounted, setIsMounted] = useState(false);
   const [generatedStars, setGeneratedStars] = useState<Star[]>([]); // State for stars
@@ -34,15 +33,6 @@ export default function SimpleDownloadPage() {
   ];
 
   useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    const is64Bit = userAgent.includes("arm64") || userAgent.includes("aarch64") || userAgent.includes("armv8");
-
-    if (is64Bit) {
-      setDownloadLink("/apks/7esenTV64.apk");
-    } else {
-      setDownloadLink("/apks/7esenTV.apk");
-    }
-
     setIsMounted(true);
 
     // Generate stars only on the client after mount
@@ -62,13 +52,7 @@ export default function SimpleDownloadPage() {
   }, []); // Empty dependency array ensures this runs only once on the client
 
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const link = document.createElement('a');
-    link.href = downloadLink;
-    link.download = downloadFilename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // No need to prevent default or manually create link, API route handles redirection
   };
 
   return (
@@ -153,7 +137,7 @@ export default function SimpleDownloadPage() {
         <div
           className={`w-full mb-5 sm:mb-6 transition-all duration-1000 delay-700 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <a href={downloadLink} onClick={handleDownload} className="block w-full">
+          <a href="/api/get-apk" className="block w-full">
             <div className="relative">
               <span className="absolute -inset-2 rounded-[22px] bg-red-500/30 blur-md animate-pulse opacity-85"></span>
               <Button 
