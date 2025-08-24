@@ -8,8 +8,6 @@ interface UpdateDialogProps {
   updates: string[];
 }
 
-const LAST_SEEN_UPDATE_VERSION = 'v1.0.0'; // يمكنك تغيير هذا لتحديد متى يجب أن يظهر التحديث الجديد
-
 export function UpdateDialog({ updates }: UpdateDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +15,7 @@ export function UpdateDialog({ updates }: UpdateDialogProps) {
     // const lastSeenVersion = localStorage.getItem('lastSeenUpdateVersion');
 
     // if (lastSeenVersion !== LAST_SEEN_UPDATE_VERSION) {
-      setIsOpen(true);
+      // setIsOpen(true);
       // localStorage.setItem('lastSeenUpdateVersion', LAST_SEEN_UPDATE_VERSION);
     // }
   }, []);
