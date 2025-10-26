@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 // Use the environment variable or fall back to your specific domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://7esen-tv.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://7esentv.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
