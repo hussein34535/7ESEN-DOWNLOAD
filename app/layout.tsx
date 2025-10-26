@@ -4,7 +4,7 @@ import Script from 'next/script'
 import "@/app/globals.css"
 
 // Assuming your website URL. Replace if different.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com'; 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com').replace('www.', ''); 
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for absolute URLs in Open Graph
@@ -66,7 +66,7 @@ export default function RootLayout({
     description: metadata.description, // Reuse description
     image: `${siteUrl}/logo.png`, // Needs absolute URL
     url: `${siteUrl}${metadata.alternates?.canonical}`, // URL to the download page
-    downloadUrl: `${siteUrl}/7esenTV.apk` // Direct download link
+    downloadUrl: 'https://github.com/hussein34535/7ESEN-DOWNLOAD/releases/download/v1.0.0/7esentv.apk' // Direct download link
   };
 
   return (
