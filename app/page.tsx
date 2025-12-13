@@ -137,7 +137,7 @@ export default function SimpleDownloadPage() {
         <div
           className={`w-full mb-5 sm:mb-6 transition-all duration-1000 delay-700 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <a href="https://github.com/hussein34535/7ESEN-DOWNLOAD/releases/download/v1.0.0/7esentv.apk" className="block w-full">
+          <a href="/7esentv.apk" download="7esentv.apk" className="block w-full">
             <div className="relative">
               <span className="absolute -inset-2 rounded-[22px] bg-red-500/30 blur-md animate-pulse opacity-85"></span>
               <Button 
