@@ -4,7 +4,7 @@ import Script from 'next/script'
 import "@/app/globals.css"
 
 // Assuming your website URL. Replace if different.
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://7esentv.com').replace('www.', '');
+const siteUrl = 'https://7esentv.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for absolute URLs in Open Graph
