@@ -4,7 +4,7 @@ import Script from 'next/script'
 import "@/app/globals.css"
 
 // Assuming your website URL. Replace if different.
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com').replace('www.', ''); 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://7esentv.com').replace('www.', '');
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), // Required for absolute URLs in Open Graph
@@ -74,11 +74,11 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="NdyoVr3Ux3Iku5KngNSznS7XqXH8simW0vv_q3UR5Ww" />
         {/* Viewport and Icon are handled by Next.js metadata object now, but keeping viewport for safety */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* <link rel="icon" href="/logo.png" /> */}
-        
+
         {/* Add JSON-LD Structured Data */}
-        <Script 
+        <Script
           id="app-structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -86,7 +86,7 @@ export default function RootLayout({
 
         {/* Google AdSense Script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2393153600924393"
-              crossOrigin="anonymous"></script>
+          crossOrigin="anonymous"></script>
       </head>
       <body>
         {children}
